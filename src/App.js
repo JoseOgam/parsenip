@@ -1,34 +1,21 @@
 import { Component } from "react";
+import { connect } from "react-redux";
 import TaskPage from "./components/TaskPage";
 
-const mockTask = [
-   {
- id: 1,
- title: 'Learn Redux',
- description: 'The store, actions, and reducers, oh my!',
- status: 'Unstarted',
- },
- {
- id: 2,
- title: 'Peace on Earth',
- description: 'No big deal.',
- status: 'Completed',
-  },
- {
- id: 3,
- title: 'Learning Redux',
- description: 'Simple Learning Curve.',
- status: 'In Progress',
- },
-]
+const mapStateToProps = (state) => {
+  return ({
+    tasks : state.tasks
+  })
+}
+
 
 class App extends Component {
   render() {
     return (
       <div className="main-content">
-        <TaskPage tasks={mockTask}/>
+        <TaskPage tasks={this.props.tasks}/>
       </div>
     )
   }
 }
-export default App;
+export default connect(mapStateToProps)(App);
