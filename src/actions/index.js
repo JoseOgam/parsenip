@@ -10,7 +10,17 @@ export function createTask({ title, description }) {
             id: uniqueId(),
             title,
             description,
-            status: 'Unstarted'
+            status: 'Completed'
+        }
+    }
+}
+
+export function editTask(id, params = {}) {
+    return {
+        type: 'EDIT_TASK',
+        payload: {
+            id,
+            params
         }
     }
 }
