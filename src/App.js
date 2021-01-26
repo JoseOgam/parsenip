@@ -11,9 +11,19 @@ const mapStateToProps = (state) => {
 
 class App extends Component {
   render() {
+    // console.trace(`props from App : `, this.props)
+    const onCreateTask = ({ title, description }) => {
+      this.props.dispatch({
+        type: 'CREATE_TASK',
+        payload: {
+          title,
+          description
+        }
+      })
+    }
     return (
       <div className="main-content">
-        <TaskPage tasks={this.props.tasks}/>
+        <TaskPage tasks={this.props.tasks} onCreateTask={onCreateTask}/>
       </div>
     )
   }
