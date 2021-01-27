@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { createTask, editTask } from "./actions";
+import { createTask, editTask } from "./redux/actions";
 import TaskPage from "./components/TaskPage";
 
 const mapStateToProps = (state) => {
