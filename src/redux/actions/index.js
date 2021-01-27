@@ -1,3 +1,5 @@
+import { CREATE_TASK, EDIT_TASK } from "../constants";
+
 let _id = 1;
 
 export function uniqueId() {
@@ -5,7 +7,7 @@ export function uniqueId() {
 }
 export function createTask({ title, description }) {
     return {
-        type: 'CREATE_TASK',
+        type: CREATE_TASK,
         payload: {
             id: uniqueId(),
             title,
@@ -17,7 +19,7 @@ export function createTask({ title, description }) {
 
 export function editTask(id, params = {}) {
     return {
-        type: 'EDIT_TASK',
+        type: EDIT_TASK,
         payload: {
             id,
             params

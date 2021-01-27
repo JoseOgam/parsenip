@@ -1,4 +1,5 @@
 import { uniqueId } from "../actions"
+import { CREATE_TASK, EDIT_TASK } from "../constants";
 
 const mockTask = [
    {
@@ -23,11 +24,11 @@ const mockTask = [
 const tasks = (state = { tasks: mockTask }, action) => {
   switch (action.type)
   {
-    case 'CREATE_TASK':
+    case CREATE_TASK:
       return {
         tasks: state.tasks.concat(action.payload)
       };
-    case 'EDIT_TASK':  
+    case EDIT_TASK:  
     const { payload } = action;
     return {
       tasks: state.tasks.map(task =>{
