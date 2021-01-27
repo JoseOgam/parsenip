@@ -47,10 +47,6 @@ hr {
 }
 
 /* layout */
-.container {
-  height: 100%;
-}
-
 .main-content {
   background-color: #f2f2f2;
   width: 100%;
@@ -72,8 +68,6 @@ hr {
   font-size: 18px;
   margin-bottom: 20px;
   text-align: right;
-  display: flex;
-  justify-content: space-between;
 }
 
 /* Task */
@@ -95,11 +89,6 @@ hr {
   min-height: 60px;
 }
 
-.task-timer {
-  text-align: right;
-  font-weight: bold;
-}
-
 .task-lists {
   display: flex;
   justify-content: space-between;
@@ -107,24 +96,8 @@ hr {
 
 .task-list {
   width: 300px;
-
 }
 
 .task-list-title {
   margin-bottom: 10px;
-}
-
-.tasks-loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.flash-error {
-  text-align: center;
-  padding: 25px;
-  background: #f2dede;
-  border-color: #ebcccc;
-  color: #a94442;
 }
