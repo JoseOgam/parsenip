@@ -1,4 +1,5 @@
-import { CREATE_TASK, EDIT_TASK } from "../constants";
+import axios from "axios";
+import { CREATE_TASK, EDIT_TASK, FETCH_TASKS_SUCCEEDED } from "../constants";
 
 let _id = 1;
 
@@ -24,5 +25,21 @@ export function editTask(id, params = {}) {
             id,
             params
         }
+    }
+}
+
+export function fetchTasksSucceeded(tasks) {
+    return {
+        type: FETCH_TASKS_SUCCEEDED,
+        payload: {
+            tasks
+        }
+    }
+}
+
+export function fetchTasks() {
+    return dispatch => {
+        axios.get('http://localhost:3001/tasks').then(resp =>
+        dispatch(fetchTasksSucceeded(resp.data)))
     }
 }

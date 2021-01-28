@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { connect } from "react-redux";
-import { createTask, editTask } from "./redux/actions";
+import { createTask, editTask, fetchTasks } from "./redux/actions";
 import TaskPage from "./components/TaskPage";
 
 const mapStateToProps = (state) => {
@@ -11,17 +11,21 @@ const mapStateToProps = (state) => {
 
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchTasks())
+  }
   onStatusChange = (id, status) => {
     this.props.dispatch(editTask(id,{status}))
   }
-  render() {
-     //console.trace(`props from App : `, this.props)
-    const onCreateTask = ({ title, description }) => {
+  onCreateTask = ({ title, description }) => {
       this.props.dispatch(createTask({title, description}))
     }
+  render() {
+     //console.trace(`props from App : `, this.props)
+  
     return (
       <div className="main-content">
-        <TaskPage tasks={this.props.tasks} onCreateTask={onCreateTask} onStatusChange={this.onStatusChange}/>
+        <TaskPage tasks={this.props.tasks} onCreateTask={this.onCreateTask} onStatusChange={this.onStatusChange}/>
       </div>
     )
   }
