@@ -1,20 +1,22 @@
 import * as api from '../../api'
-import { CREATE_TASK, EDIT_TASK, FETCH_TASKS_SUCCEEDED } from "../constants";
+import { EDIT_TASK, FETCH_TASKS_SUCCEEDED, CREATE_TASK_SUCCEEDED } from "../constants";
 
-let _id = 1;
-
-export function uniqueId() {
-    return _id++
-}
-export function createTask({ title, description }) {
+export function createTaskSucceeded(task) {
     return {
-        type: CREATE_TASK,
+        type: CREATE_TASK_SUCCEEDED,
         payload: {
-            id: uniqueId(),
-            title,
-            description,
-            status: 'Completed'
+            task
         }
+    }
+}
+
+export function createTask({ title, description, status='Unstarted' }) {
+    return dispatch => {
+        api.createTask(title, description, status).then(resp => {
+            dispatch(createTaskSucceeded(resp.data))
+        }).catch(e => {
+            console.log('Error :', e.message)
+        })
     }
 }
 

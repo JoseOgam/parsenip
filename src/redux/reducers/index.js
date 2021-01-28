@@ -1,5 +1,5 @@
 
-import { CREATE_TASK, EDIT_TASK, FETCH_TASKS_SUCCEEDED } from "../constants";
+import { CREATE_TASK, CREATE_TASK_SUCCEEDED, EDIT_TASK, FETCH_TASKS_SUCCEEDED } from "../constants";
 
 
 const tasks = (state = { tasks: [] }, action) => {
@@ -23,6 +23,10 @@ const tasks = (state = { tasks: [] }, action) => {
     case FETCH_TASKS_SUCCEEDED:
       return {
         tasks: action.payload.tasks
+      };
+    case CREATE_TASK_SUCCEEDED:
+      return {
+        tasks: state.tasks.concat(action.payload.task)
       }
     default:
       return state;

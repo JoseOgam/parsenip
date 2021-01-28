@@ -17,8 +17,8 @@ class App extends Component {
   onStatusChange = (id, status) => {
     this.props.dispatch(editTask(id,{status}))
   }
-  onCreateTask = ({ title, description }) => {
-      this.props.dispatch(createTask({title, description}))
+  onCreateTask = ({ title, description, status }) => {
+      this.props.dispatch(createTask({title, description, status}))
     }
   render() {
      //console.trace(`props from App : `, this.props)
